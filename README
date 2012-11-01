@@ -6,7 +6,7 @@ geoffery.miller@gmail.com
 
 A package of code to teach the value of modular design, MVC basics (without classes or a directory structure), and how to work with PHP and MySQL.  
 
-This code is released for educational purposes only.  The organization is intended to be highly readable and simple to understand at the cost of providing a robust framework for adding code.
+This code is released for educational purposes only.  The organization is intended to be highly readable and simple to understand.  This comes with cost of not providing a particularly robust framework for adding code.
 
 More information and code credits pertaining to password hashing used in this project is availible in security.php.
 
