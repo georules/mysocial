@@ -10,11 +10,11 @@ Login
 <form action="user_process.php" method="post" enctype="multipart/form-data">
 
 <label for="username">Username:</label>
-<input type="text" name="username" id="username" />
+<input type="text" name="username" id="username" autocomplete="off" />
 <br>
 
 <label for="password">Password:</label>
-<input type="password" name="password" id="password" />
+<input type="password" name="password" id="password" autocomplete="off" />
 <br>
 
 <input type="submit" name="submit" value="Login!" />
@@ -27,11 +27,11 @@ New User
 <form name="userform" action="newuser_process.php" method="post" enctype="multipart/form-data">
 
 <label for="username">Username:</label>
-<input type="text" name="username" id="username" />
+<input type="text" name="username" id="username" autocomplete="off"/>
 <br>
 
 <label for="password">Password:</label>
-<input type="password" name="password" id="password" />
+<input type="password" name="password" id="password" autocomplete="off"/>
 <br>
 
 <label for="file">Choose a Picture:</label>

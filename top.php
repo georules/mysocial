@@ -2,12 +2,12 @@
 include("database_queries.php");
 if ($_GET["logout"] == "1")
 {
-        cookie_logout();
+        set_user_logged_out();
         $userID = 0;
 }
 else
 {
-        $userID = cookie_get_user_logged_in();
+        $userID = get_user_logged_in();
 }
 ?>
 

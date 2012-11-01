@@ -10,7 +10,7 @@ $username = database_get_username($userID);
 
 //Get the posts from this userID
 $posts = database_get_user_posts($userID);
-$loggedInUser = cookie_get_user_logged_in();
+$loggedInUser = get_user_logged_in();
 // See if we should add the friend
 $addfriend = $_GET["addfriend"];
 if ($addfriend == 1)	{

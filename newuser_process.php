@@ -7,10 +7,6 @@ $password = $_POST["password"];
 // NOTE: Add another field to get from the user here:
 
 
-// Secure the password so that the database and cookie
-// does not store it as plain text
-$password = sha1($password);
-
 // Get the picture file
 $picture = $_FILES["file"]["tmp_name"];
 

@@ -2,12 +2,11 @@
 include("connect.php");
 include("security.php");
 
-// NOTE: You can copy this function to get other fields from the database for this userID
+// NOTE: You can write a new function like this function 
+// to get other fields from the database for this userID
 function database_get_username($userID)
 {
         $userID = sanitize_input($userID);
-	// Modify SELECT username to be the field you want to get from the database
-	// For example, SELECT newfield FROM useres WHERE userID='$userID'
         $data = mysql_query("SELECT username FROM users WHERE userID='$userID'");
         $row = mysql_fetch_array($data);
         $result = $row[0];
@@ -16,7 +15,7 @@ function database_get_username($userID)
 
 // NOTE: You will want to change the function name from "database_get_username"
 // to something like "database_get_newfield" where newfield is the name of your new field.
-// Copy the function here to get out your new field:
+// You will need to change the SQL query so that it selects newfield.
 
 // NOTE: In this function, you can add more fields to be inserted into the database
 // For example: database_add_user($username, $password, $picture, $newfield)
@@ -27,6 +26,8 @@ function database_add_user($username, $password, $picture)	// Add more variables
         $password = sanitize_input($password);
 	// NOTE: Add another variable to be sanitized here:
 
+	// Hash the password so that it is not stored in the database as plain text
+	$password = create_hash($password);
 	// Process the picture for putting it in the database
 	$picture = process_picture($picture);
 
@@ -42,7 +43,7 @@ function database_add_user($username, $password, $picture)	// Add more variables
 		mysql_query($q);
                 // Set this userID as logged in
                 $userID = mysql_insert_id();
-                cookie_set_user_logged_in($userID, $password);
+                set_user_logged_in($userID, $password);
         }
         return $userID;
 }
@@ -193,68 +194,4 @@ function database_get_user_posts($userID)
         return $posts;
 }
 
-// This function authorizes a username/password combination
-function database_user_login($username, $password)
-{
-	$username = sanitize_input($username);
-	$password = sanitize_input($password);
-
-	$userID = database_get_userID($username);
-
-	$result = mysql_query("SELECT password FROM users WHERE userID='" . $userID . "'");
-        $row = mysql_fetch_array($result);
-        $datapass = $row[0];
-
-	// If the database password and the passed in password are the same
-	// the user is verified.  Otherwise, return 0.
-	if ($password == $datapass)
-	{
-		cookie_set_user_logged_in($userID, $password);
-	}
-	else
-	{
-		cookie_logout();
-		$userID = 0;
-	}
-
-	return $userID;
-}
-
-// The below function manage the cookie to keep a user logged in or log the user out
-function cookie_logout()
-{
-	session_destroy();
-}
-
-function cookie_get_user_logged_in()
-{
-	return $_SESSION["user"];
-}
-
-function cookie_set_user_logged_in($userID, $password)
-{
-	// We need to check that this cookie is valid by checking it against the database.
-        // Get the cookie information
-        $uid = sanitize_input($_COOKIE['mysocial_userID']);
-        $p = sanitize_input($_COOKIE['mysocial_password']);
-
-        // Get the database information
-        $result = mysql_query("SELECT username, password FROM users WHERE userID='" . $uid . "'");
-        $row = mysql_fetch_array($result);
-        $username = $row[0];
-        $password = $row[1];
-
-        // Check if the password in the cookie is the same as the password in the database
-        if ($p != $password)
-        {
-                // The user is not logged in
-		cookie_logout();
-        }
-        else
-        {
-		$_SESSION["user"] = $userID;
-        }
-
-        return $userID;
-}
 ?>
