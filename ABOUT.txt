@@ -1,0 +1,11 @@
+MySocial Assignment for CGS2835
+Version 2, Nov 7
+
+Geoffery L. Miller
+geoffery.miller@gmail.com
+
+A package of code to teach the value of modular design, MVC basics, and how to work with PHP and MySQL.
+If you want to use this code for a website project outside of the course, I simply ask that you email me to 
+tell me about the project and give me credit.
+
+Thanks!

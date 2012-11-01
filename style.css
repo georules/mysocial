@@ -1,0 +1,99 @@
+body	{
+	font-family: Verdana;
+	background-color: #003264;
+}
+
+a:link {
+	color:blue;
+	text-decoration:none;
+}
+a:visited {
+	color:blue; 
+	text-decoration:none;
+}    
+a:hover {
+	color:red;
+	text-decoration:underline;
+}
+a img {
+	border-width: 0;
+}
+
+#container{
+	margin: 20px;
+	padding: 10px;
+	background-color: #ffffbe;
+	overflow: auto;
+}
+
+#topcontainer{
+	margin: 20px;
+	padding: 10px;
+	padding-bottom: 20px;
+	background-color: #ffffbe;
+	height:80px;
+}
+
+#login	{
+	float:right;
+}
+
+#navigation	{
+	float:left;
+}
+
+#header	{
+	font-size: 200%;
+}
+
+#form {
+	background-color: #c0c0c0;
+	width: 30%;
+	padding: 5px;
+	margin: 10px;
+}
+
+#picture{
+	float:right;
+}
+
+#posts {
+	background-color: #c0c0c0;
+	width: 100%;
+}
+
+#posts_all {
+	background-color: #c0c0c0;
+	width: 60%;
+}
+	
+#user_container {
+	width: 50%;
+	margin: 5px;
+}
+
+#friend_container {
+	width: 50%;
+	margin: 5px;
+}
+
+#friend_post_container {
+        width: 50%;
+        margin: 5px;
+	float:right;
+}
+
+
+#user {
+	min-height: 100px;
+	height:100px;
+	padding: 2px;
+	margin: 5px;
+	overflow: hidden;
+	max-width: 200px;
+	position: relative;
+	float:left;
+	text-align: center;
+	border-width: 1px;
+	border-style: dotted;
+}
