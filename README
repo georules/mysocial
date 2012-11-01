@@ -8,6 +8,8 @@ A package of code to teach the value of modular design, MVC basics (without clas
 
 More information and code credits pertaining to password hashing used in this project is availible in security.php.
 
+Database schematic will be added to this codebase soon.  connect-sample.php must be renamed to connect.php and modified for your database.
+
 Copyright (c) 2012, Geoffery L. Miller
 All rights reserved.
 
