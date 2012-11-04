@@ -12,7 +12,7 @@ More information and code credits pertaining to password hashing used in this pr
 
 Database schematic will be added to this codebase soon.  connect-sample.php must be renamed to connect.php and modified for your database.
 
-Pictures are stored in the SQL database and echoed.  Improved Performance via file storage, caching, http expiry headers is left as an exercise to the student.
+Pictures are stored in the SQL database and echoed.  Improved performance via file storage, caching, http expiry headers is left as an exercise to the student.
 
 Copyright (c) 2012, Geoffery L. Miller
 All rights reserved.
