@@ -9,7 +9,7 @@ function database_get_username($userID)
         $userID = sanitize_input($userID);
         $data = mysql_query("SELECT username FROM users WHERE userID='$userID'");
         $row = mysql_fetch_array($data);
-        $result = $row[0];
+        $result = $row['username'];
         return $result;
 }
 
@@ -93,7 +93,8 @@ function resize_image($data,$width,$height) {
 // This function checks to see if a username is already in the users table
 function check_username($username)	{
         // Check to see that name is not taken
-        $result = mysql_query("SELECT count(*) FROM users WHERE username='" . $username . "'");
+	$q = "SELECT count(*) FROM users WHERE username='$username'";
+        $result = mysql_query($q);
         $row = mysql_fetch_array($result);
         $num_users = $row[0];
 	return $num_users;
@@ -114,7 +115,8 @@ function database_get_friends($userID)
 {
         // Get all of the friends for this user
         $friends = array();
-        $result = mysql_query("SELECT DISTINCT friendID FROM friends WHERE userID = $userID");
+	$q = "SELECT DISTINCT friendID FROM friends WHERE userID = '$userID'";
+        $result = mysql_query($q);
         $i = 0;
         while ($row = mysql_fetch_array($result))       {
                 $friends[$i] = $row['friendID'];
@@ -152,9 +154,9 @@ function database_show_users()
         $result = mysql_query("SELECT userID, username, picture FROM users ORDER BY userID");
         while($row = mysql_fetch_array($result))
         {
-		$userID = $row[0];
-		$username = $row[1];
-		$picture = $row[2];
+		$userID = $row['userID'];
+		$username = $row['username'];
+		$picture = $row['picture'];
 
 		echo "<div id = 'user'>\n";
                 echo "<a href = 'user.php?userID=" . $userID . "'>\n";
@@ -169,10 +171,10 @@ function database_show_users()
 function database_get_userID($username)
 {
 	$username = sanitize_input($username);
-        $result = mysql_query("SELECT userID FROM users WHERE username = '" . $username . "'");
+	$q = "SELECT userID FROM users WHERE username = '$username'";
+        $result = mysql_query($q);
         $row = mysql_fetch_array($result);
-        $userID = $row[0];
-
+        $userID = $row['userID'];
         return $userID;
 }
 
@@ -181,16 +183,14 @@ function database_get_user_posts($userID)
 {
 	$userID = sanitize_input($userID);
 	$posts = "";
-
-	// Get the database information
-	$result = mysql_query("SELECT message,timestamp FROM posts WHERE userID='" . $userID . "' ORDER BY timestamp DESC");
-
+	$q = "SELECT message,timestamp FROM posts WHERE userID='$userID' ORDER BY timestamp DESC";
+	$result = mysql_query($q);
 	while($row = mysql_fetch_array($result))
 	{
-		$message = stripslashes($row[message]);
-		$posts = $posts . $row[timestamp] . ": " . $message . "<br />";
+		$message = stripslashes($row['message']);
+		$timestamp = $row['timestamp'];
+		$posts = $posts . $timestamp . ": " . $message . "<br />";
 	}
-
         return $posts;
 }
 
