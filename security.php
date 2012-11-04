@@ -11,12 +11,12 @@ function database_user_login($username, $password)
 {
         $username = sanitize_input($username);
         $password = sanitize_input($password);
-
         $userID = database_get_userID($username);
 
-        $result = mysql_query("SELECT password FROM users WHERE userID='" . $userID . "'");
+	$q = "SELECT password FROM users WHERE userID='$userID'";
+        $result = mysql_query($q);
         $row = mysql_fetch_array($result);
-        $datapass = $row[0];
+        $datapass = $row['password'];
 
         // If the database password and the passed in password are the same
         // the user is verified.  Otherwise, return 0.
