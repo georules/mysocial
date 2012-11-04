@@ -6,11 +6,12 @@ geoffery.miller@gmail.com
 
 A package of code to teach the value of modular design, MVC basics (without classes or a directory structure), and how to work with PHP and MySQL.  
 
+Database schematic will be added to this codebase soon.  connect-sample.php must be renamed to connect.php and modified for your database.
+
 This code is released for educational purposes only.  The organization is intended to be highly readable and simple to understand.  This comes with cost of not providing a particularly robust framework for adding new code and features.
 
+Special notes:
 More information and code credits pertaining to password hashing used in this project is availible in security.php.  It would, of course, be better policy to use prepared statements.  This project's sql injection preventative measures are the use of mysql_query which only allows 1 query at a time, strip_tags, mysql_real_escape_string, and using quotes around variable input.  Improving the security policy is left as an exercise to the student. 
-
-Database schematic will be added to this codebase soon.  connect-sample.php must be renamed to connect.php and modified for your database.
 
 Pictures are stored in the SQL database and echoed.  Improved performance via file storage, caching, http expiry headers is left as an exercise to the student.
 
