@@ -41,7 +41,12 @@ function set_user_logged_out()
 
 function get_user_logged_in()
 {
-        return $_SESSION["user"];
+	if (empty($_SESSION["user"]))	{
+		return 0;
+	}
+	else	{
+        	return $_SESSION["user"];
+	}
 }
 
 function set_user_logged_in($userID)

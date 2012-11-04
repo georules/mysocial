@@ -1,6 +1,6 @@
 <?php
 include("database_queries.php");
-if ($_GET["logout"] == "1")
+if (!empty($_GET["logout"]))
 {
         set_user_logged_out();
         $userID = 0;

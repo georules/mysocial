@@ -127,16 +127,17 @@ function database_get_friends($userID)
 
 function database_show_friend_posts($userID)
 {
-	// Print out the most recent post from each friend userID have
+	// Print out the most recent post from each friend
 
 	// Get all of the friends for this user
 	$friends = database_get_friends($userID);
-	$friends[sizeof($friends) + 1] = $userID;
+	array_push($friends, $userID); // Also show this user's posts
 	$s = "";
 	// Print the most recent post from each friend
-	for ($i = 0; $i <= sizeof($friends); $i++)	{
+	for ($i = 0; $i < sizeof($friends); $i++)	{
 		$uID = $friends[$i];
-		$q = "SELECT users.username, posts.message, posts.timestamp FROM users, posts WHERE posts.userID='$uID' AND users.userID='$uID' ";
+		$q = "SELECT users.username, posts.message, posts.timestamp FROM users, posts "; 
+		$q = $q . "WHERE posts.userID='$uID' AND users.userID='$uID' ";
 		$q = $q . "ORDER BY posts.timestamp DESC LIMIT 2";
 
 		$result = mysql_query($q);
